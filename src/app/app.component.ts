@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ListService } from './services/list.service';
+import { Observable } from 'rxjs';
+import { ListItem } from './types';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'list';
+  constructor(private listService: ListService) {}
+
+  listItems$ = this.listService.list$ as Observable<ListItem[]>;
 }
